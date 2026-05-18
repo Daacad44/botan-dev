@@ -1909,6 +1909,80 @@
       transition: width .3s, height .3s;
       mix-blend-mode: screen
     }
+
+    /* FLOATING BUTTONS */
+    .float-button {
+      position: fixed;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 950;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      text-decoration: none;
+      border: none;
+      background: var(--primary);
+    }
+
+    .float-button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5);
+    }
+
+    #scrollTopBtn {
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    #scrollTopBtn:hover {
+      transform: scale(1.15);
+    }
+
+    .whatsapp-btn {
+      bottom: 100px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      animation: whatsappBounce 2s infinite;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.15);
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.5);
+      animation: none;
+    }
+
+    @keyframes whatsappBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      .float-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+      }
+
+      #scrollTopBtn {
+        bottom: 20px;
+        right: 20px;
+      }
+
+      .whatsapp-btn {
+        bottom: 80px;
+        right: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -2476,12 +2550,12 @@
     ];
 
     const projectsData = [
-      { title: 'Smart Study Management System', desc: 'University SaaS dashboard for students with GPA analytics, calendar deadlines, and progress tracking charts.', tags: ['SaaS', 'Dashboard', 'Education'], tech: ['React', 'Next.js', 'PostgreSQL', 'TailwindCSS'], image: '/assets/project-study.png', demoLink: '/demo/study-management' },
-      { title: 'E-Commerce Platform', desc: 'Modern online shopping system with product grids, filters, shopping cart, and promotional banner management.', tags: ['E-Commerce', 'Full Stack', 'Stripe'], tech: ['Next.js', 'Node.js', 'MongoDB', 'Redux'], image: '/assets/project-ecommerce.png', demoLink: '/demo/ecommerce-platform' },
-      { title: 'Hospital Management System', desc: 'Healthcare admin dashboard for patient records, doctor availability scheduling, and medical report billing.', tags: ['Healthcare', 'Admin', 'Analytics'], tech: ['Vue.js', 'Python', 'FastAPI', 'Chart.js'], image: '/assets/project-hospital.png', demoLink: '/demo/hospital-system' },
-      { title: 'Fitness Tracker System', desc: 'Modern health tracking UI for workout plans, calories, heart rate monitoring, and daily activity goal charts.', tags: ['HealthTech', 'Tracker', 'Mobile-First'], tech: ['React Native', 'TypeScript', 'GraphQL', 'AWS'], image: '/assets/project-fitness.png', demoLink: '/demo/fitness-tracker' },
-      { title: 'Learning Management System', desc: 'Online education platform with course catalogs, video lessons, student progress tracking, and quizzes.', tags: ['LMS', 'Video Streaming', 'WebRTC'], tech: ['React', 'Node.js', 'WebRTC', 'Redis'], image: '/assets/project-lms.png', demoLink: '/demo/learning-system' },
-      { title: 'Developer Portfolio Dashboard', desc: 'Professional developer showcase system with interactive grid layout, GitHub statistics, and achievements panel.', tags: ['Portfolio', 'UI/UX', 'Glassmorphism'], tech: ['HTML5', 'CSS3', 'JavaScript', 'Vite'], image: '/assets/project-portfolio.png', demoLink: '/demo/portfolio-dashboard' },
+      { title: 'Smart Study Management System', desc: 'University SaaS dashboard for students with GPA analytics, calendar deadlines, and progress tracking charts.', tags: ['SaaS', 'Dashboard', 'Education'], tech: ['React', 'Next.js', 'PostgreSQL', 'TailwindCSS'], image: '/assets/project-study.png', demoLink: 'https://ssms.botanict.xyz/' },
+      { title: 'E-Commerce Platform', desc: 'Modern online shopping system with product grids, filters, shopping cart, and promotional banner management.', tags: ['E-Commerce', 'Full Stack', 'Stripe'], tech: ['Next.js', 'Node.js', 'MongoDB', 'Redux'], image: '/assets/project-ecommerce.png', demoLink: 'https://suuq.botanict.xyz/' },
+      { title: 'Hospital Management System', desc: 'Healthcare admin dashboard for patient records, doctor availability scheduling, and medical report billing.', tags: ['Healthcare', 'Admin', 'Analytics'], tech: ['Vue.js', 'Python', 'FastAPI', 'Chart.js'], image: '/assets/project-hospital.png', demoLink: 'https://hms.botanict.xyz/' },
+      { title: 'Fitness Tracker System', desc: 'Modern health tracking UI for workout plans, calories, heart rate monitoring, and daily activity goal charts.', tags: ['HealthTech', 'Tracker', 'Mobile-First'], tech: ['React Native', 'TypeScript', 'GraphQL', 'AWS'], image: '/assets/project-fitness.png', demoLink: '#' },
+      { title: 'Learning Management System', desc: 'Online education platform with course catalogs, video lessons, student progress tracking, and quizzes.', tags: ['LMS', 'Video Streaming', 'WebRTC'], tech: ['React', 'Node.js', 'WebRTC', 'Redis'], image: '/assets/project-lms.png', demoLink: '#' },
+      { title: 'Developer Portfolio Dashboard', desc: 'Professional developer showcase system with interactive grid layout, GitHub statistics, and achievements panel.', tags: ['Portfolio', 'UI/UX', 'Glassmorphism'], tech: ['HTML5', 'CSS3', 'JavaScript', 'Vite'], image: '/assets/project-portfolio.png', demoLink: 'https://www.botanict.xyz/' },
     ];
 
     const timelineData = [
@@ -2549,7 +2623,7 @@
           <div class="project-tech">${p.tech.map(t => `<span>#${t}</span>`).join('')}</div>
         </div>
         <div style="display:flex; gap:10px; margin-top:25px;">
-           <button class="btn-primary" style="padding:10px; font-size:0.8rem; flex:1;" onclick="event.stopPropagation(); showNotification('System Connected', 'Navigating to ${p.demoLink}...')">Live Demo</button>
+           <button class="btn-primary" style="padding:10px; font-size:0.8rem; flex:1;" onclick="event.stopPropagation(); ${p.demoLink !== '#' ? "window.open('" + p.demoLink + "', '_blank'); showNotification('Opening Demo', 'Launching live demo...');" : "showNotification('Coming Soon', 'This project demo will be available soon.');"}">Live Demo</button>
            <button class="btn-secondary" style="padding:10px; font-size:0.8rem; flex:1;" onclick="event.stopPropagation(); showNotification('GitHub Vault', 'Opening source code repository...')">View Code</button>
         </div>
       </div>
@@ -2640,10 +2714,32 @@
         return;
       }
 
-      const mailtoLink = `mailto:hello@botandev.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("Name: " + name + "\nEmail: " + email + "\n\n" + message)}`;
-      window.location.href = mailtoLink;
+      // Submit to FormSubmit
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('subject', subject);
+      formData.append('message', message);
 
-      showNotification('Client Launched!', 'Your default email client has been opened. It works for real!');
+      fetch('https://formspree.io/f/xyzabcde', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if (response.ok) {
+          showNotification('Message Sent!', 'Your message has been successfully delivered. Thanks for reaching out!');
+          document.getElementById('nameInput').value = '';
+          document.getElementById('emailInput').value = '';
+          document.getElementById('subjectInput').value = '';
+          document.getElementById('messageInput').value = '';
+        } else {
+          showNotification('Delivery Error', 'There was an issue sending your message. Please try again.');
+        }
+      })
+      .catch(err => {
+        showNotification('Connection Error', 'Unable to reach the server. Please try again later.');
+      });
     }
 
     // ============ DASHBOARD ANIMATIONS ============
@@ -2816,6 +2912,69 @@
       });
     }
 
+    // ============ SCROLL-TO-TOP BUTTON ============
+    function initScrollToTop() {
+      const btn = document.getElementById('scrollTopBtn');
+      if (!btn) return;
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          btn.style.display = 'flex';
+          btn.style.opacity = '1';
+        } else {
+          btn.style.opacity = '0';
+          setTimeout(() => { btn.style.display = 'none' }, 300);
+        }
+      });
+      
+      btn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    // ============ MOBILE MENU SMOOTH SCROLL ============
+    function initMobileMenuScroll() {
+      const menuBtn = document.getElementById('menuBtn');
+      const navLinks = document.getElementById('navLinks');
+      
+      if (!menuBtn || !navLinks) return;
+      
+      // Add smooth scroll for menu links
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              // Close mobile menu if open
+              if (window.innerWidth < 768) {
+                menuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+              }
+            }
+          }
+        });
+      });
+    }
+
+    // ============ WHATSAPP INTEGRATION ============
+    function initWhatsApp() {
+      const btn = document.getElementById('whatsappBtn');
+      if (!btn) {
+        const chatBtn = document.createElement('a');
+        chatBtn.id = 'whatsappBtn';
+        chatBtn.href = 'https://wa.me/+252612599355?text=' + encodeURIComponent('# Botandev WhatsApp Welcome Message\n\nKu soo dhowaaw 👋\n\nWaxaad hadda ku jirtaa bogga rasmiga ah ee Botandev.com.\n\nWaad ku mahadsan tahay inaad nala soo xiriirtay. Fariintaada si taxaddar leh ayaan u aragnay, waxaana kuu soo jawaabi doonaa sida ugu dhaqsiyaha badan.\n\nHaddii aad u baahan tahay:\n\n* Website Development\n* Mobile App Development\n* UI/UX Design\n* System Development\n* AI Solutions\n* Technical Support\n\nFadlan si faahfaahsan noogu soo dir waxa aad u baahan tahay.\n\nMahadsanid, Botandev Team');
+        chatBtn.target = '_blank';
+        chatBtn.rel = 'noopener';
+        chatBtn.className = 'float-button whatsapp-btn';
+        chatBtn.innerHTML = '💬';
+        chatBtn.title = 'Chat on WhatsApp';
+        document.body.appendChild(chatBtn);
+      }
+    }
+
     // ============ INITIALIZE ============
     async function initApp() {
       // 1. Fetch all external section files
@@ -2843,6 +3002,9 @@
         initScrollAnimations();
         initTypingEffect();
         initTiltEffect();
+        initScrollToTop();
+        initMobileMenuScroll();
+        initWhatsApp();
       }, 500); // reduced delay since fetch consumes time
     }
 
