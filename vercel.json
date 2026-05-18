@@ -1,0 +1,15 @@
+{
+    "buildCommand": "",
+    "outputDirectory": ".",
+    "framework": null,
+    "rewrites": [
+        {
+            "source": "/sections/(.*)",
+            "destination": "/public/sections/$1"
+        },
+        {
+            "source": "/assets/(.*)",
+            "destination": "/public/assets/$1"
+        }
+    ]
+}
